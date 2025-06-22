@@ -1,22 +1,22 @@
 # ServerPop
 
-**Author:** AnotherPanda  
 **Version:** 1.0.0  
-**Description:** Rust plugin that displays the number of connected players and, optionally, admins via a chat command.
+**Author:** AnotherPanda  
+**Description:** Displays the number of connected players and optionally admins via chat command.
 
 ---
 
 ## Features
 
-- Displays the total number of connected players in global chat.
-- Optionally shows how many of them are admins (configurable).
-- Customizable command triggers.
+- Shows total connected players in chat.
+- Optionally includes count of connected admins.
+- Customizable chat command triggers.
 
 ---
 
 ## Configuration
 
-A configuration file will be automatically generated at `oxide/config/ServerPop.json` after first load.
+Upon first launch, the plugin will generate the following config file:
 
 ```json
 {
@@ -25,22 +25,26 @@ A configuration file will be automatically generated at `oxide/config/ServerPop.
 }
 ```
 
-- `PopCommands`: List of commands that players can use to check the server's population status.
-- `ShowAdminCount`: If set to `true`, the number of connected admins will be displayed. If `false`, admin info will be omitted.
+### Config Parameters
+
+| Key              | Type    | Description                                                     |
+| ---------------- | ------- | --------------------------------------------------------------- |
+| `PopCommands`    | array   | Commands players can use to check server population.            |
+| `ShowAdminCount` | boolean | If true, shows count of connected admins in the output message. |
 
 ---
 
 ## Usage
 
-Any player can type one of the configured commands (by default `/pop` or `/players`) in the in-game chat.
+Players can type `/pop` or `/players` in chat to see the current population.
 
-Example output when `ShowAdminCount` is enabled:
+**Example with `ShowAdminCount = true`:**
 
 ```
 There are 12 player(s) connected to the server. Admin(s) online: 2
 ```
 
-Example output when `ShowAdminCount` is disabled:
+**Example with `ShowAdminCount = false`:**
 
 ```
 There are 12 player(s) connected to the server.
@@ -51,4 +55,4 @@ There are 12 player(s) connected to the server.
 ## Notes
 
 - Commands are case-insensitive.
-- This plugin does not differentiate between invisible or stealth-admin players.
+- Does not detect invisible or stealth-admin players.
